@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fruits_app/features/onboarding/presentation/views/widgets/onboarding_view_body.dart';
 
 class OnboaringView extends StatelessWidget {
   const OnboaringView({super.key});
@@ -6,6 +7,6 @@ class OnboaringView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return const Scaffold(body: SafeArea(child: OnboardingViewBody()));
   }
 }
