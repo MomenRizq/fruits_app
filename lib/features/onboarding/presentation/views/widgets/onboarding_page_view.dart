@@ -18,16 +18,24 @@ class _OnboardingPageViewState extends State<OnboardingPageView> {
         PageViewItem(
             image: Assets.imgItem1OnboardingImg,
             backgroundImage: Assets.imgBG1OnboardingImg,
-            subTitle: "نقدم لك أفضل الفواكه المختارة بعناية. اطلع على التفاصيل والصور والتقييمات لتتأكد من اختيار الفاكهة المثالية",
+            subTitle:
+                "اكتشف تجربة تسوق فريدة مع FruitHUB. استكشف مجموعتنا الواسعة من الفواكه الطازجة الممتازة واحصل على أفضل العروض والجودة العالية.",
             title: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text("مرحبًا بك في"),
                 Text("Fruit"),
                 Text("HUB"),
-
               ],
-            )
-             )
+            )),
+        PageViewItem(
+            image: Assets.imgItem2OnboardingImg,
+            backgroundImage: Assets.imgBG2OnboardingImg,
+            subTitle:
+                "نقدم لك أفضل الفواكه المختارة بعناية. اطلع على التفاصيل والصور والتقييمات لتتأكد من اختيار الفاكهة المثالية",
+            title: Text(
+              "ابحث وتسوق",
+            )),
       ],
     ));
   }

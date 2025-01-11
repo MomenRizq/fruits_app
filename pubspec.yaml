@@ -29,11 +29,16 @@ environment:
 # versions available, run `flutter pub outdated`.
 dependencies:
   cupertino_icons: ^1.0.8
+  dots_indicator: ^3.0.0
   flutter:
     sdk: flutter
+  flutter_localizations:
+    sdk: flutter
   flutter_svg: ^2.0.16
+  intl: ^0.19.0
 
 dev_dependencies:
+  flutter_intl: null
   flutter_launcher_icons: ^0.14.2
 
   # The "flutter_lints" package below contains a set of recommended lints to
@@ -92,4 +97,6 @@ flutter_assets:
   assets_path: assets\img
   output_path: lib\core\utils
   filename: app_images.dart
-  field_prefix: 
+  field_prefix: null
+flutter_intl:
+  enabled: true

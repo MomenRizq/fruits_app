@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:fruits_app/core/constant.dart';
 import 'package:fruits_app/core/utils/app_images.dart';
+import 'package:fruits_app/core/widgets/custom_button.dart';
 
 class PageViewItem extends StatelessWidget {
   const PageViewItem(
@@ -25,19 +27,41 @@ class PageViewItem extends StatelessWidget {
             children: [
               Positioned.fill(
                   child: SvgPicture.asset(
-                  backgroundImage,
-                  fit: BoxFit.fill,
+                backgroundImage,
+                fit: BoxFit.fill,
               )),
               Positioned(
-                bottom: 0,
-                left: 0,
-                right: 0,
+                  bottom: 0,
+                  left: 0,
+                  right: 0,
                   child: SvgPicture.asset(
-                  image,
-              ))
+                    image,
+                  )),
+              Padding(
+                padding: const EdgeInsets.all(16),
+                child: Text("تخط",
+                    style: Theme.of(context)
+                        .textTheme
+                        .headlineLarge!
+                        .copyWith(color: Colors.black38, fontSize: 25)),
+              )
             ],
           ),
-        )
+        ),
+        SizedBox(
+          height: 64,
+        ),
+        title,
+        SizedBox(
+          height: 25,
+        ),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16),
+          child: Text(
+            subTitle,
+            textAlign: TextAlign.center,
+          ),
+        ),
       ],
     );
   }
