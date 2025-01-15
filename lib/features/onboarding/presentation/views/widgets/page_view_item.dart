@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:fruits_app/core/constant.dart';
 import 'package:fruits_app/core/utils/app_images.dart';
+import 'package:fruits_app/core/utils/app_text_styles.dart';
 import 'package:fruits_app/core/widgets/custom_button.dart';
 
 class PageViewItem extends StatelessWidget {
@@ -10,11 +11,12 @@ class PageViewItem extends StatelessWidget {
       required this.image,
       required this.backgroundImage,
       required this.subTitle,
-      required this.title});
+      required this.title, required this.isvisible});
 
   final String image, backgroundImage;
   final String subTitle;
   final Widget title;
+  final bool isvisible ;
 
   @override
   Widget build(BuildContext context) {
@@ -37,13 +39,15 @@ class PageViewItem extends StatelessWidget {
                   child: SvgPicture.asset(
                     image,
                   )),
-              Padding(
-                padding: const EdgeInsets.all(16),
-                child: Text("تخط",
-                    style: Theme.of(context)
-                        .textTheme
-                        .headlineLarge!
-                        .copyWith(color: Colors.black38, fontSize: 25)),
+              Visibility(
+                visible: isvisible,
+                child: Padding(
+                  padding: const EdgeInsets.all(16),
+                  child: Text("تخط",
+                     style: TextStyles.regular13.copyWith(
+                        color: const Color(0xFF949D9E),
+                      ),),
+                ),
               )
             ],
           ),
@@ -56,9 +60,12 @@ class PageViewItem extends StatelessWidget {
           height: 25,
         ),
         Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16),
+          padding: const EdgeInsets.symmetric(horizontal: 37),
           child: Text(
             subTitle,
+             style: TextStyles.semiBold13.copyWith(
+              color: const Color(0xFF4E5456),
+            ),
             textAlign: TextAlign.center,
           ),
         ),

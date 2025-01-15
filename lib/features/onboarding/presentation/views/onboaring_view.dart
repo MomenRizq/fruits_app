@@ -9,7 +9,7 @@ class OnboaringView extends StatelessWidget {
   Widget build(BuildContext context) {
     return const Scaffold(
         body: SafeArea(
-        child: OnboardingViewBody(),
+        child: OnBoardingViewBody(),
     ));
   }
 }
