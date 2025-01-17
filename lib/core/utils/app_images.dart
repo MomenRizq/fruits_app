@@ -6,6 +6,10 @@ class Assets {
   /// assets/img/app_icon.png
   static const String imgAppIcon = "assets/img/app_icon.png";
 
+  /// Assets for imgAppleIcon
+  /// assets/img/apple_icon.svg
+  static const String imgAppleIcon = "assets/img/apple_icon.svg";
+
   /// Assets for imgBG1OnboardingImg
   /// assets/img/BG1_onboarding_img_.svg
   static const String imgBG1OnboardingImg = "assets/img/BG1_onboarding_img_.svg";
@@ -17,6 +21,14 @@ class Assets {
   /// Assets for imgBottomSplash
   /// assets/img/bottom_splash.svg
   static const String imgBottomSplash = "assets/img/bottom_splash.svg";
+
+  /// Assets for imgFacebookIcon
+  /// assets/img/facebook_icon.svg
+  static const String imgFacebookIcon = "assets/img/facebook_icon.svg";
+
+  /// Assets for imgGoogleIcon
+  /// assets/img/google_icon.svg
+  static const String imgGoogleIcon = "assets/img/google_icon.svg";
 
   /// Assets for imgItem1OnboardingImg
   /// assets/img/item1_onboarding_img.svg
