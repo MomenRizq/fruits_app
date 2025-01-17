@@ -5,9 +5,11 @@ import 'package:fruits_app/core/utils/app_images.dart';
 import 'package:fruits_app/core/utils/app_text_styles.dart';
 import 'package:fruits_app/core/widgets/custom_button.dart';
 import 'package:fruits_app/core/widgets/custom_text_field.dart';
-import 'package:fruits_app/features/Auth/presentation/views/widgets/dont_have_account_widget.dart';
+import 'package:fruits_app/features/Auth/presentation/views/widgets/have_account_widget.dart';
 import 'package:fruits_app/features/Auth/presentation/views/widgets/or_divider.dart';
 import 'package:fruits_app/features/Auth/presentation/views/widgets/social_login_button.dart';
+
+import '../signup_view.dart';
 
 class LoginViewBody extends StatelessWidget {
   const LoginViewBody({super.key});
@@ -22,11 +24,18 @@ class LoginViewBody extends StatelessWidget {
             spacing: 16,
             children: [
               SizedBox(height: 20),
-              CustomTextFormField(hintText: "البريد الالكتروني", textInputType:TextInputType.emailAddress,),
-              CustomTextFormField(hintText: "كلمة المرور", textInputType:TextInputType.visiblePassword, suffixIcon:Icon(
-                    Icons.remove_red_eye,
-                    color: Color(0xffC9CECF),
-                  ),),
+              CustomTextFormField(
+                hintText: "البريد الالكتروني",
+                textInputType: TextInputType.emailAddress,
+              ),
+              CustomTextFormField(
+                hintText: "كلمة المرور",
+                textInputType: TextInputType.visiblePassword,
+                suffixIcon: Icon(
+                  Icons.remove_red_eye,
+                  color: Color(0xffC9CECF),
+                ),
+              ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
@@ -45,12 +54,18 @@ class LoginViewBody extends StatelessWidget {
                 onPressed: () {},
                 text: 'تسجيل دخول',
               ),
-              const DontHaveAnAccountWidget(),
+              HaveAnAccountWidget(
+                firstWord: 'لا تملك حساب؟',
+                secondWord: "انشاء حساب",
+                onTap: () {
+                  Navigator.of(context).pushNamed(SignUpView.routeName);
+                },
+              ),
               const SizedBox(
                 height: 10,
               ),
               const OrDivider(),
-               SocialLoginButton(
+              SocialLoginButton(
                 onPressed: () {},
                 image: Assets.imgGoogleIcon,
                 title: 'تسجيل بواسطة جوجل',
@@ -65,7 +80,6 @@ class LoginViewBody extends StatelessWidget {
                 image: Assets.imgFacebookIcon,
                 title: 'تسجيل بواسطة فيسبوك',
               ),
-      
             ],
           ),
         ),
