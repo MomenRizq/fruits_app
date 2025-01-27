@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:dartz/dartz.dart';
 import 'package:fruits_app/core/errors/exception.dart';
 import 'package:fruits_app/features/Auth/data/models/user_model.dart';
@@ -24,6 +26,7 @@ Future<Either<Failure, UserEntity>> createUserWithEmailAndPassword(
     } on CustomException catch (e) {
       return left(ServerFailure(e.message));
     } catch (e) {
+      log("Eception in AuthRepoImpl.createUserWithEmailAndPassword: ${e.toString()}");
       return left(
         ServerFailure(
           'هناك خطأ ما يرجى المحاولة في وقت لاحق',
@@ -31,4 +34,24 @@ Future<Either<Failure, UserEntity>> createUserWithEmailAndPassword(
       );
     }
   }
+  
+  @override
+  Future<Either<Failure, UserEntity>> signInWithEmailAndPassword(String email, String password) async{
+        try {
+      var user = await firebaseAuthService.signInWithEmailAndPassword(
+          email: email, password: password);
+      return right(
+        UserModel.fromFirebaseUser(user),
+      );
+    } on CustomException catch (e) {
+      return left(ServerFailure(e.message));
+    } catch (e) {
+      log("Eception in AuthRepoImpl.loginWithEmailAndPassword: ${e.toString()}");
+      return left(
+        ServerFailure(
+          'هناك خطأ ما يرجى المحاولة في وقت لاحق',
+        ),
+      );
+    }
+  } 
 }
