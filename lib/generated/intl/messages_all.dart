@@ -10,7 +10,6 @@
 // ignore_for_file:comment_references
 
 import 'dart:async';
-import 'dart:developer';
 
 import 'package:flutter/foundation.dart';
 import 'package:intl/intl.dart';
@@ -56,7 +55,6 @@ bool _messagesExistFor(String locale) {
   try {
     return _findExact(locale) != null;
   } catch (e) {
-    log("Eception thrown in message lookup for locale '$locale': $e");
     return false;
   }
 }

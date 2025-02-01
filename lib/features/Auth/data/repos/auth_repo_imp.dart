@@ -54,4 +54,22 @@ Future<Either<Failure, UserEntity>> createUserWithEmailAndPassword(
       );
     }
   } 
+
+  @override
+  Future<Either<Failure, UserEntity>> signInWithGoogle() async{
+    try {
+      var user = await firebaseAuthService.signInWithGoogle();
+      return right(
+        UserModel.fromFirebaseUser(user),
+      );
+    } catch (e) {
+      log("Eception in AuthRepoImpl.loginWithEmailAndPassword: ${e.toString()}");
+      return left(
+        ServerFailure(
+          'هناك خطأ ما يرجى المحاولة في وقت لاحق',
+        ),
+      );
+    }
+    
+  }
 }
