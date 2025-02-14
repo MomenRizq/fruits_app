@@ -75,7 +75,15 @@ Future<Either<Failure, UserEntity>> createUserWithEmailAndPassword(
     try {
       user= await firebaseAuthService.signInWithGoogle();
       var userEntity = UserModel.fromFirebaseUser(user);
-     await addUserData(userEntity: userEntity); 
+      var isUserExist = await databaseServices.checkIfDataExist(path: EndPoint.isUserExist, docId: user.uid);
+      if(isUserExist)
+      {
+        await getUserData(uid: user.uid);
+      }
+      else{
+await addUserData(userEntity: userEntity); 
+      }
+     
       return right(userEntity);
 
     } catch (e) {

@@ -23,7 +23,11 @@ class LoginView extends StatelessWidget {
           body: BlocConsumer<SigninCubit, SigninState>(
             listener: (context, state) {
               if (state is SigninSuccess) {
-                Navigator.pop(context);
+                CustomSnackBar(context, "تم تسجيل الدخول بنجاح" , color: Colors.green);
+               
+                Future.delayed(const Duration(seconds: 1), () {
+                  Navigator.pop(context);
+                });
               }if(state is SigninFairlure){
                 CustomSnackBar(context, state.message);
               }
