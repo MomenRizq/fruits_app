@@ -4,6 +4,7 @@ import 'package:fruits_app/core/widgets/custom_app_bar.dart';
 import 'package:fruits_app/features/Auth/domain/repos/auth_repo.dart';
 import 'package:fruits_app/features/Auth/presentation/cubits/signin_cubit/signin_cubit.dart';
 import 'package:fruits_app/features/Auth/presentation/views/widgets/login_view_body.dart';
+import 'package:fruits_app/features/Home/presentation/views/home_view.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 
 import '../../../../core/services/get_it_services.dart';
@@ -26,7 +27,7 @@ class LoginView extends StatelessWidget {
                 CustomSnackBar(context, "تم تسجيل الدخول بنجاح" , color: Colors.green);
                
                 Future.delayed(const Duration(seconds: 1), () {
-                  Navigator.pop(context);
+                  Navigator.pushNamed(context, HomeView.routeName);
                 });
               }if(state is SigninFairlure){
                 CustomSnackBar(context, state.message);
