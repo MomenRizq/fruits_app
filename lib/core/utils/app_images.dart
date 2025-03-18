@@ -42,6 +42,38 @@ class Assets {
   /// assets/img/google_icon.svg
   static const String imgGoogleIcon = "assets/img/google_icon.svg";
 
+  /// Assets for imgIconBottomBoldHome
+  /// assets/img/icon_bottom/bold/home.svg
+  static const String imgIconBottomBoldHome = "assets/img/icon_bottom/bold/home.svg";
+
+  /// Assets for imgIconBottomBoldProducts
+  /// assets/img/icon_bottom/bold/products.svg
+  static const String imgIconBottomBoldProducts = "assets/img/icon_bottom/bold/products.svg";
+
+  /// Assets for imgIconBottomBoldShoppingCart
+  /// assets/img/icon_bottom/bold/shopping-cart.svg
+  static const String imgIconBottomBoldShoppingCart = "assets/img/icon_bottom/bold/shopping-cart.svg";
+
+  /// Assets for imgIconBottomBoldUser
+  /// assets/img/icon_bottom/bold/user.svg
+  static const String imgIconBottomBoldUser = "assets/img/icon_bottom/bold/user.svg";
+
+  /// Assets for imgIconBottomOutlineHome
+  /// assets/img/icon_bottom/outline/home.svg
+  static const String imgIconBottomOutlineHome = "assets/img/icon_bottom/outline/home.svg";
+
+  /// Assets for imgIconBottomOutlineProducts
+  /// assets/img/icon_bottom/outline/products.svg
+  static const String imgIconBottomOutlineProducts = "assets/img/icon_bottom/outline/products.svg";
+
+  /// Assets for imgIconBottomOutlineShoppingCart
+  /// assets/img/icon_bottom/outline/shopping-cart.svg
+  static const String imgIconBottomOutlineShoppingCart = "assets/img/icon_bottom/outline/shopping-cart.svg";
+
+  /// Assets for imgIconBottomOutlineUser
+  /// assets/img/icon_bottom/outline/user.svg
+  static const String imgIconBottomOutlineUser = "assets/img/icon_bottom/outline/user.svg";
+
   /// Assets for imgItem1OnboardingImg
   /// assets/img/item1_onboarding_img.svg
   static const String imgItem1OnboardingImg = "assets/img/item1_onboarding_img.svg";
