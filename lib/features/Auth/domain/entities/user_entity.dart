@@ -10,7 +10,6 @@ class   UserEntity {
 
 
 
-  toMap() => {'email': email, 'name': name, 'uid': uid};
 }
 
 

@@ -1,9 +1,12 @@
+import 'dart:convert';
 import 'dart:developer';
 
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:fruits_app/core/constant.dart';
 import 'package:fruits_app/core/errors/exception.dart';
 import 'package:fruits_app/core/services/database_services.dart';
+import 'package:fruits_app/core/services/shared_preference_singleton.dart';
 import 'package:fruits_app/core/utils/endpoint.dart';
 import 'package:fruits_app/features/Auth/data/models/user_model.dart';
 import 'package:fruits_app/features/Auth/domain/repos/auth_repo.dart';
@@ -54,6 +57,7 @@ Future<Either<Failure, UserEntity>> createUserWithEmailAndPassword(
       var user = await firebaseAuthService.signInWithEmailAndPassword(
           email: email, password: password);
       var userEntity = await  getUserData(uid: user.uid);
+       await saveUserData(user: userEntity);
       return right(
        userEntity 
       );
@@ -75,6 +79,7 @@ Future<Either<Failure, UserEntity>> createUserWithEmailAndPassword(
     try {
       user= await firebaseAuthService.signInWithGoogle();
       var userEntity = UserModel.fromFirebaseUser(user);
+      await saveUserData(user: userEntity);
       var isUserExist = await databaseServices.checkIfDataExist(path: EndPoint.isUserExist, docId: user.uid);
       if(isUserExist)
       {
@@ -104,6 +109,7 @@ await addUserData(userEntity: userEntity);
     try {
        user = await firebaseAuthService.signInWithFacebook();
       var userEntity = UserModel.fromFirebaseUser(user);
+       await saveUserData(user: userEntity);
        await addUserData(userEntity: userEntity); 
 
 
@@ -125,7 +131,7 @@ await addUserData(userEntity: userEntity);
   @override
   Future addUserData({required UserEntity userEntity}) async{
 
-  await databaseServices.addData(path: EndPoint.addUserData, data: userEntity.toMap() , docId: userEntity.uid); 
+  await databaseServices.addData(path: EndPoint.addUserData, data:UserModel.fromEntity(userEntity).toMap(), docId: userEntity.uid); 
   }
 
   
@@ -138,6 +144,12 @@ await addUserData(userEntity: userEntity);
     var userData = await databaseServices.getData(path: EndPoint.getUserData, docId: uid);
     return UserModel.fromJson(userData);
   }
+
+  @override
+   Future saveUserData({required UserEntity user}) async {
+     var jsonData = jsonEncode(UserModel.fromEntity(user).toMap());
+     await Prefs.setString(kUserData, jsonData);
+   }
 
   
 
